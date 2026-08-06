@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-662c4960-b27c-4163-810d-1957a868338b/styles.css">
+<script src="_ds/nocturne-662c4960-b27c-4163-810d-1957a868338b/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: #12141f; }
+  a { color: var(--color-accent); }
+  a:hover { color: var(--color-accent-300); }
+  @media (max-width: 479px) { .split-dots { display: none; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  .btn { transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1), background 150ms cubic-bezier(0.4, 0, 0.2, 1); }
+  .btn:active { transform: translateY(0) scale(.98); transition-duration: 80ms; }
+  *:focus-visible { transition: none !important; }
+</style>
+<script src="splits.js"></script>
+<script src="motion.js"></script>
+</helmet>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="120" rx="14" fill="#12141f"></rect>
+    <rect x="36" y="36" width="48" height="48" rx="8" fill="none" stroke="#9184d9" stroke-width="3"></rect>
+    <path d="M60 46v16l11 7" fill="none" stroke="#20D9FF" stroke-width="3" stroke-linecap="round"></path>
+  </svg>
+</template>
+
+<div style="min-height: 100svh; background: #12141f; color: var(--color-text); font-family: var(--font-body); display: flex; flex-direction: column;">
+
+  <div style="padding: 22px clamp(20px, 5vw, 56px);">
+    <a href="index.html" style="font-size: 12px; letter-spacing: .12em; color: #8FA7C7; text-decoration: none;" style-hover="color: var(--color-text);">← back</a>
+  </div>
+
+  <main style="flex: 1; display: flex; flex-wrap: wrap; align-items: stretch; gap: clamp(24px, 4vw, 56px); padding: 0 clamp(20px, 5vw, 56px) clamp(40px, 6vw, 72px); max-width: 1320px; width: 100%; margin: 0 auto; box-sizing: border-box;">
+
+    <div onMouseEnter="{{ pause }}" onMouseLeave="{{ resume }}" onTouchStart="{{ onTouchStart }}" onTouchEnd="{{ onTouchEnd }}" style="{{ stageStyle }}">
+      <img src="img/builder.jpg" alt="Samuel in a denim jacket, arms crossed" style="{{ img0 }}">
+      <img src="img/creator-02.jpg" alt="Samuel presenting the CareLens research poster at a UNT conference" style="{{ img1 }}">
+      <img src="img/builder-02.jpg" alt="Samuel pointing at the CareLens poster on a conference board" style="{{ img2 }}">
+      <img src="img/philanthropist.jpg" alt="Samuel smiling and giving a thumbs up" style="{{ img3 }}">
+      <img src="img/philanthropist-02.jpg" alt="Samuel with the Feed My Starving Children volunteer group in front of the session total of 14,688 meals packed" style="{{ img4 }}">
+      <img src="img/philanthropist-03.jpg" alt="Samuel in a hairnet working the packing line at Feed My Starving Children" style="{{ img5 }}">
+      <img src="img/creator.jpg" alt="Samuel in a red checked flannel shirt" style="{{ img6 }}">
+      <img src="img/creator-03.jpg" alt="Samuel mid-interview with a guest across the table on The Late Night AI Show" style="{{ img7 }}">
+      <img src="img/leader.jpg" alt="Samuel in a black suit and tie" style="{{ img8 }}">
+      <img src="img/leader-02.jpg" alt="Samuel and the SSAI officers at the club recruitment table in Discovery Park" style="{{ img9 }}">
+      <img src="img/leader-03.jpg" alt="Samuel beside the AI Horizons 2026 conference banner at the Gateway Center" style="{{ img10 }}">
+      <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(78% 62% at 50% 34%, transparent 0%, rgba(18,20,31,.34) 78%, rgba(18,20,31,.6) 100%);"></div>
+      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(18,20,31,.82) 0%, rgba(18,20,31,.14) 30%, transparent 56%);"></div>
+
+      <sc-if value="{{ hasCaption }}" hint-placeholder-val="{{ false }}">
+        <span style="position: absolute; right: 12px; bottom: 14px; max-width: 60%; padding: 6px 12px; border-radius: 999px; background: rgba(18,20,31,.66); font-size: 11px; letter-spacing: .1em; color: #8FA7C7; text-align: right;">{{ caption }}</span>
+      </sc-if>
+
+      <sc-if value="{{ multi }}" hint-placeholder-val="{{ true }}">
+        <div class="split-dots" style="position: absolute; left: 6px; bottom: 4px; display: flex; align-items: center;">
+          <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="2">
+            <button type="button" aria-label="{{ dot.label }}" aria-current="{{ dot.current }}" onClick="{{ dot.go }}" style="{{ dot.style }}">
+              <span style="{{ dot.inner }}"></span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="flex: 1 1 400px; min-width: 300px; display: flex; flex-direction: column; gap: 16px; padding-top: clamp(4px, 2vw, 22px);">
+      <span style="font-size: 11px; letter-spacing: .28em; color: {{ color }};">{{ eyebrow }}</span>
+      <span data-rule style="width: 26px; height: 2px; background: {{ color }}; box-shadow: 0 0 14px {{ color }};"></span>
+      <h1 data-anim style="margin: 0; font-size: clamp(24px, 3.2vw, 38px); font-weight: 500; letter-spacing: -.025em; line-height: 1.15; text-wrap: pretty;">{{ headline }}</h1>
+      <sc-for list="{{ body }}" as="para" hint-placeholder-count="3">
+        <p style="margin: 0; max-width: 62ch; font-size: 15px; line-height: 1.65; color: #8FA7C7; text-wrap: pretty;">{{ para.pre }}<span style="color: #F4F7FF;">{{ para.hi }}</span>{{ para.post }}</p>
+      </sc-for>
+      <sc-for list="{{ links }}" as="link" hint-placeholder-count="1">
+        <a href="{{ link.href }}" target="_blank" rel="noopener noreferrer" style="font-size: 13px; text-decoration: none; align-self: flex-start;">{{ link.label }}</a>
+      </sc-for>
+    </div>
+
+  </main>
+
+  <nav style="border-top: 1px solid var(--color-divider); padding: 20px clamp(20px, 5vw, 56px) 34px;">
+    <div data-anim-group style="max-width: 1320px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px;">
+      <sc-for list="{{ others }}" as="other" hint-placeholder-count="3">
+        <a href="{{ other.href }}" style="{{ other.style }}" style-hover="border-color: var(--color-accent-600);">
+          <span style="font-size: 11px; letter-spacing: .28em; color: {{ other.color }};">{{ other.num }}</span>
+          <span style="font-family: var(--font-heading); font-weight: 500; font-size: 14px; letter-spacing: .02em;">{{ other.label }} →</span>
+        </a>
+      </sc-for>
+    </div>
+  </nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { splits: null, i: 0, paused: false, looped: false };
+
+  componentDidMount() {
+    const load = () => {
+      if (window.SPLITS) {
+        this.setState({ splits: window.SPLITS });
+        this.startTimer();
+      } else {
+        setTimeout(load, 40);
+      }
+    };
+    load();
+    this.onKey = (e) => {
+      if (e.key === 'ArrowRight') this.go(this.state.i + 1, true);
+      if (e.key === 'ArrowLeft') this.go(this.state.i - 1, true);
+    };
+    window.addEventListener('keydown', this.onKey);
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    window.removeEventListener('keydown', this.onKey);
+  }
+
+  startTimer() {
+    clearInterval(this.timer);
+    if (this.reduced) return;
+    this.timer = setInterval(() => {
+      const s = this.split();
+      if (!s || s.images.length < 2) return clearInterval(this.timer);
+      if (this.state.paused || this.state.looped) return;
+      const next = this.state.i + 1;
+      if (next >= s.images.length) {
+        this.setState({ i: s.images.length - 1, looped: true });
+        clearInterval(this.timer);
+      } else {
+        this.setState({ i: next });
+      }
+    }, 4000);
+  }
+
+  slug() {
+    const q = new URLSearchParams(location.search).get('s');
+    return (q || location.hash.replace('#', '') || 'builder').toLowerCase();
+  }
+  split() {
+    if (!this.state.splits) return null;
+    return this.state.splits.find(s => s.slug === this.slug()) || this.state.splits[0];
+  }
+
+  /* The eleven <img> tags are literal in the template (one per photo across all
+     four splits) so their paths survive bundling; only the active split's are shown. */
+  slideStyles(s, fade) {
+    const out = {};
+    let g = 0;
+    (this.state.splits || []).forEach(sp => {
+      sp.images.forEach((im, k) => {
+        const mine = sp.slug === s.slug;
+        out['img' + g] = mine
+          ? 'position: absolute; inset: 0; width: 100%; height: 100%; object-fit: ' + (im.fit || 'cover')
+            + '; object-position: ' + im.pos + '; filter: saturate(.88) contrast(1.04) brightness(.94); transition: ' + fade
+            + '; opacity: ' + (k === this.state.i ? 1 : 0) + (im.mirror ? '; transform: scaleX(-1)' : '') + ';'
+          : 'display: none;';
+        g++;
+      });
+    });
+    for (let k = g; k < 11; k++) out['img' + k] = 'display: none;';
+    return out;
+  }
+
+  go(n, manual) {
+    const s = this.split();
+    if (!s) return;
+    const len = s.images.length;
+    const i = ((n % len) + len) % len;
+    this.setState({ i, looped: manual ? true : this.state.looped });
+    if (manual) clearInterval(this.timer);
+  }
+
+  renderVals() {
+    const s = this.split();
+    const empty = {
+      dots: [], body: [], links: [], others: [],
+      multi: false, hasCaption: false, caption: '', color: '#9184d9',
+      eyebrow: '', headline: '',
+      stageStyle: 'position: relative; flex: 1 1 380px; min-width: 300px; height: clamp(380px, 66vh, 760px); border-radius: var(--radius-md); overflow: hidden; background: #12141f;',
+      pause: () => {}, resume: () => {}, onTouchStart: () => {}, onTouchEnd: () => {},
+    };
+    if (!s) return empty;
+
+    const cur = s.images[this.state.i] || s.images[0];
+    const fade = this.reduced ? 'none' : 'opacity .5s ease';
+
+    return {
+      color: s.color,
+      eyebrow: s.num + ' / ' + s.label,
+      headline: s.headline,
+      body: s.body.map((p, k) => (typeof p === 'string'
+        ? { pre: p, hi: '', post: '', key: k }
+        : { pre: p.pre, hi: p.hi, post: p.post, key: k })),
+      links: s.links,
+      multi: s.images.length > 1,
+      caption: cur.caption || '',
+      hasCaption: !!cur.caption,
+      stageStyle: 'position: relative; flex: 1 1 380px; min-width: 300px; height: clamp(380px, 66vh, 760px); border-radius: var(--radius-md); overflow: hidden; touch-action: pan-y; background: ' + s.bg
+        + '; box-shadow: inset 34px 0 70px -40px ' + s.rim[0] + ', inset -34px 0 70px -40px ' + s.rim[1] + ', var(--shadow-md);',
+      ...this.slideStyles(s, fade),
+      dots: s.images.map((im, k) => ({
+        key: k,
+        label: 'Show image ' + (k + 1) + ' of ' + s.images.length,
+        current: k === this.state.i ? 'true' : 'false',
+        go: () => this.go(k, true),
+        style: 'width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 0; border: 0; background: none; cursor: pointer;',
+        inner: 'display: block; width: 9px; height: 9px; border-radius: 999px; transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1), scale 200ms cubic-bezier(0.4, 0, 0.2, 1); background: ' + s.color
+          + '; opacity: ' + (k === this.state.i ? 1 : 0.3) + '; scale: ' + (k === this.state.i ? 1.3 : 1)
+          + '; box-shadow: 0 0 10px ' + (k === this.state.i ? s.color : 'transparent') + ';',
+      })),
+      others: this.state.splits.filter(o => o.slug !== s.slug).map(o => ({
+        key: o.slug,
+        href: 'split.html?s=' + o.slug,
+        num: o.num, label: o.label, color: o.tint,
+        style: 'flex: 1 1 200px; display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--color-divider); border-radius: var(--radius-md); text-decoration: none; color: var(--color-text); transition: border-color .3s ease;',
+      })),
+      pause: () => this.setState({ paused: true }),
+      resume: () => this.setState({ paused: false }),
+      onTouchStart: (e) => { this.tx = e.touches[0].clientX; },
+      onTouchEnd: (e) => {
+        if (this.tx == null) return;
+        const dx = e.changedTouches[0].clientX - this.tx;
+        if (Math.abs(dx) > 40) this.go(this.state.i + (dx < 0 ? 1 : -1), true);
+        this.tx = null;
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>
