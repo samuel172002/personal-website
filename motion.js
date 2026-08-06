@@ -147,6 +147,19 @@
       { duration: 300, easing: ENTER, fill: 'backwards' });
   }
 
+  /* Fires on first load and again whenever bfcache restores this document,
+     so the entrance never depends on load/DOMContentLoaded firing again. */
+  function enterPage() {
+    pageIn();
+    heroIn();
+  }
+
+  /* The exit animation below holds opacity 0 with fill:'forwards'. If the
+     browser bfcaches the page while that hold is in effect (or mid-fade, on
+     a hard back/close), the cached snapshot is invisible. Track it so it can
+     be cleared before the snapshot is taken and again on restore. */
+  var exitAnim = null;
+
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a || a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
@@ -154,9 +167,27 @@
     if (!href || href.charAt(0) === '#' || /^(mailto:|tel:|https?:)/.test(href)) return;
     if (REDUCED) return;
     e.preventDefault();
-    var out = document.body.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-12px)' }],
+    exitAnim = document.body.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-12px)' }],
       { duration: 200, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', fill: 'forwards' });
-    out.finished.then(function () { window.scrollTo(0, 0); location.href = href; });
+    exitAnim.finished.then(function () { window.scrollTo(0, 0); location.href = href; }).catch(function () {});
+  });
+
+  /* Never let a page be bfcached mid- or post-fade-out. */
+  window.addEventListener('pagehide', function () {
+    if (!exitAnim) return;
+    try { exitAnim.cancel(); } catch (err) {}
+    exitAnim = null;
+  });
+
+  /* event.persisted === true means this document is being restored from
+     bfcache: DOMContentLoaded/load will NOT fire again, so undo whatever the
+     exit animation left behind and re-run the entrance by hand. */
+  window.addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    if (exitAnim) { try { exitAnim.cancel(); } catch (err) {} exitAnim = null; }
+    document.body.style.opacity = '';
+    document.body.style.transform = '';
+    enterPage();
   });
 
   /* ---------- ambient particles: pause when hidden ---------- */
@@ -180,6 +211,6 @@
   new MutationObserver(function () { scan(); watchClock(); particles(); })
     .observe(document.documentElement, { childList: true, subtree: true });
 
-  window.addEventListener('load', function () { pageIn(); heroIn(); });
+  window.addEventListener('load', enterPage);
   setTimeout(heroIn, 700);
 })();

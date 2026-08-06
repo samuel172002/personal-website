@@ -116,10 +116,16 @@ class Component extends DCLogic {
     };
     window.addEventListener('keydown', this.onKey);
     this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.onPageShow = (e) => {
+      if (!e.persisted) return;
+      this.startTimer();
+    };
+    window.addEventListener('pageshow', this.onPageShow);
   }
   componentWillUnmount() {
     clearInterval(this.timer);
     window.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('pageshow', this.onPageShow);
   }
 
   startTimer() {

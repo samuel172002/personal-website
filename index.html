@@ -434,9 +434,17 @@ class Component extends DCLogic {
   componentDidMount() {
     this.tick();
     this.timer = setInterval(() => this.tick(), 1000);
+    this.onPageShow = (e) => {
+      if (!e.persisted) return;
+      this.tick();
+      clearInterval(this.timer);
+      this.timer = setInterval(() => this.tick(), 1000);
+    };
+    window.addEventListener('pageshow', this.onPageShow);
   }
   componentWillUnmount() {
     clearInterval(this.timer);
+    window.removeEventListener('pageshow', this.onPageShow);
   }
 
   tick() {

@@ -63,8 +63,18 @@ class Component extends DCLogic {
   componentDidMount() {
     this.tick();
     this.timer = setInterval(() => this.tick(), 1000);
+    this.onPageShow = (e) => {
+      if (!e.persisted) return;
+      this.tick();
+      clearInterval(this.timer);
+      this.timer = setInterval(() => this.tick(), 1000);
+    };
+    window.addEventListener('pageshow', this.onPageShow);
   }
-  componentWillUnmount() { clearInterval(this.timer); }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    window.removeEventListener('pageshow', this.onPageShow);
+  }
 
   tick() {
     const target = new Date(this.props.gDay || '2026-12-11T09:00:00-06:00').getTime();
