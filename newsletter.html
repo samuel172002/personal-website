@@ -44,7 +44,7 @@
     </div>
 
     <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: clamp(40px, 7vw, 84px);">
-      <span style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(62px, 13vw, 132px); line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; color: {{ digitColor }}; text-shadow: {{ digitGlow }};" data-clock="d">{{ days }}</span>
+      <span style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(62px, 13vw, 132px); line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; display: inline-block; min-width: 3ch; text-align: center; color: {{ digitColor }}; text-shadow: {{ digitGlow }};" data-clock="d">{{ days }}</span>
       <span style="font-size: 10px; letter-spacing: .3em; color: var(--color-neutral-500);">DAYS UNTIL G-DAY</span>
     </div>
   </main>
@@ -85,7 +85,7 @@ class Component extends DCLogic {
   renderVals() {
     const critical = this.state.days <= (this.props.criticalDays ?? 30);
     return {
-      days: String(this.state.days).padStart(3, '0'),
+      days: String(this.state.days),
       eyebrow: this.props.eyebrow ?? 'The Grind Report',
       headline: this.props.headline ?? 'Watch me try.',
       comingSoon: this.props.comingSoon ?? true,

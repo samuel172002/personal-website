@@ -17,7 +17,7 @@ window.SPLITS = [
     ],
     links: [{ label: 'GitHub ↗', href: 'https://github.com/samuel172002' }],
     images: [
-      { src: 'img/builder.jpg', alt: 'Samuel in a denim jacket, arms crossed', caption: '', pos: '50% 22%', mirror: true },
+      { src: 'img/builder.jpg', alt: 'Samuel in a denim jacket, arms crossed', caption: '', pos: '45% 35%', zoom: 1.32, origin: '56% 39%', mirror: true },
       { src: 'img/creator-02.jpg', alt: 'Samuel presenting the CareLens research poster at a UNT conference', caption: 'Presenting CareLens', pos: '30% 26%', mirror: false },
       { src: 'img/builder-02.jpg', alt: 'Samuel pointing at the CareLens poster on a conference board', caption: 'CareLens poster', pos: '26% 30%', mirror: false },
     ],
@@ -39,7 +39,7 @@ window.SPLITS = [
     ],
     links: [],
     images: [
-      { src: 'img/philanthropist.jpg', alt: 'Samuel smiling and giving a thumbs up', caption: '', pos: '50% 26%', mirror: false },
+      { src: 'img/philanthropist.jpg', alt: 'Samuel smiling and giving a thumbs up', caption: '', pos: '54% 33%', zoom: 1.1, origin: '85% 24%', mirror: false },
       { src: 'img/philanthropist-02.jpg', alt: 'Samuel with the Feed My Starving Children volunteer group in front of the session total: 14,688 meals packed', caption: '14,688 meals · FMSC', pos: '78% 40%', mirror: false },
       { src: 'img/philanthropist-03.jpg', alt: 'Samuel in a hairnet working the packing line at Feed My Starving Children', caption: 'On the packing line', pos: '72% 44%', mirror: false },
     ],
@@ -63,7 +63,7 @@ window.SPLITS = [
       { label: 'The Late Night AI Show ↗', href: 'https://www.youtube.com/@TheLateNightAIShow' },
     ],
     images: [
-      { src: 'img/creator.jpg', alt: 'Samuel in a red checked flannel shirt', caption: '', pos: '50% 18%', mirror: false },
+      { src: 'img/creator.jpg', alt: 'Samuel in a red checked flannel shirt', caption: '', pos: '55% 13%', zoom: 1.55, origin: '63% 3%', mirror: false },
       { src: 'img/creator-03.jpg', alt: 'Samuel mid-interview with a guest across the table on The Late Night AI Show', caption: 'The Late Night AI Show', pos: '50% 50%', fit: 'contain', mirror: false },
     ],
   },
@@ -84,7 +84,7 @@ window.SPLITS = [
     ],
     links: [],
     images: [
-      { src: 'img/leader.jpg', alt: 'Samuel in a black suit and tie', caption: '', pos: '50% 20%', mirror: false },
+      { src: 'img/leader.jpg', alt: 'Samuel in a black suit and tie', caption: '', pos: '51% 32%', zoom: 1.05, origin: '61% 30%', mirror: false },
       { src: 'img/leader-02.jpg', alt: 'Samuel and the SSAI officers at the club recruitment table in Discovery Park', caption: 'SSAI · Discovery Park', pos: '24% 46%', mirror: false },
       { src: 'img/leader-03.jpg', alt: 'Samuel beside the AI Horizons 2026 conference banner at the Gateway Center', caption: 'AI Horizons 2026', pos: '76% 52%', mirror: false },
     ],

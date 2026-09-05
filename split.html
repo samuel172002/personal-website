@@ -162,10 +162,14 @@ class Component extends DCLogic {
     (this.state.splits || []).forEach(sp => {
       sp.images.forEach((im, k) => {
         const mine = sp.slug === s.slug;
+        /* Portraits carry an optional zoom/origin so the face sits centred with the
+           eye line ~1/3 down, matching the home panel crop. */
+        const tf = [im.mirror ? 'scaleX(-1)' : '', im.zoom ? 'scale(' + im.zoom + ')' : ''].filter(Boolean).join(' ');
         out['img' + g] = mine
           ? 'position: absolute; inset: 0; width: 100%; height: 100%; object-fit: ' + (im.fit || 'cover')
             + '; object-position: ' + im.pos + '; filter: saturate(.88) contrast(1.04) brightness(.94); transition: ' + fade
-            + '; opacity: ' + (k === this.state.i ? 1 : 0) + (im.mirror ? '; transform: scaleX(-1)' : '') + ';'
+            + '; opacity: ' + (k === this.state.i ? 1 : 0) + (tf ? '; transform: ' + tf : '')
+            + (im.origin ? '; transform-origin: ' + im.origin : '') + ';'
           : 'display: none;';
         g++;
       });
